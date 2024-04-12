@@ -28,7 +28,7 @@ public class FacultyController {
     @PutMapping
     public ResponseEntity<Faculty> updatefaculty(@RequestBody Faculty faculty) {
         return service.getFaculty(faculty.getId()) == null ? ResponseEntity.notFound().build()
-                : ResponseEntity.ok(service.updateFaculty(faculty.getId(), faculty));
+                : ResponseEntity.ok(service.updateFaculty(faculty));
     }
 
     @DeleteMapping("{id}")

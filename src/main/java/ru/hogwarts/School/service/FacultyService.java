@@ -20,12 +20,13 @@ public class FacultyService {
         return facultyes.get(id);
     }
 
-    public Faculty updateFaculty(Long id, Faculty faculty) {
-        facultyes.put(id, faculty);
+    public Faculty updateFaculty(Faculty faculty) {
+        facultyes.put(faculty.getId(), faculty);
         return faculty;
     }
 
     public Faculty deleteFaculty(Long id) {
+        counter--;
         return facultyes.remove(id);
     }
 }

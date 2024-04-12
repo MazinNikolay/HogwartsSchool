@@ -28,7 +28,7 @@ public class StudentController {
     @PutMapping
     public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
         return service.getStudent(student.getId()) == null ? ResponseEntity.notFound().build()
-                : ResponseEntity.ok(service.updateStudent(student.getId(), student));
+                : ResponseEntity.ok(service.updateStudent(student));
     }
 
     @DeleteMapping("{id}")

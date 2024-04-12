@@ -20,12 +20,13 @@ public class StudentService {
         return students.get(id);
     }
 
-    public Student updateStudent(Long id, Student student) {
-        students.put(id, student);
+    public Student updateStudent(Student student) {
+        students.put(student.getId(), student);
         return student;
     }
 
     public Student deleteStudent(Long id) {
+        counter--;
         return students.remove(id);
     }
 }
