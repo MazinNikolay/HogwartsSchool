@@ -2,6 +2,8 @@ package ru.hogwarts.School.model;
 
 import java.util.Objects;
 
+import static org.apache.commons.lang3.StringUtils.*;
+
 public class Faculty {
     private Long id;
     private String name;
@@ -9,8 +11,8 @@ public class Faculty {
 
     public Faculty(Long id, String name, String color) {
         this.id = id;
-        this.name = name;
-        this.color = color;
+        this.name = capitalize(lowerCase(name));
+        this.color = capitalize(lowerCase(color));
     }
 
     public Long getId() {

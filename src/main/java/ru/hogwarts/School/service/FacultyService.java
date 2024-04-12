@@ -4,6 +4,10 @@ import org.springframework.stereotype.Service;
 import ru.hogwarts.School.model.Faculty;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.apache.commons.lang3.StringUtils.*;
 
 @Service
 public class FacultyService {
@@ -26,8 +30,14 @@ public class FacultyService {
     }
 
     public Faculty deleteFaculty(Long id) {
-        counter--;
         return facultyes.remove(id);
+    }
+
+    public List<Faculty> sortByColor(String color) {
+        String formattedColor = capitalize(lowerCase(color));
+        return facultyes.values().stream()
+                .filter(e -> e.getColor().equals(formattedColor))
+                .collect(Collectors.toList());
     }
 }
 
