@@ -11,8 +11,13 @@ import static org.apache.commons.lang3.StringUtils.*;
 
 @Service
 public class FacultyService {
-    private final HashMap<Long, Faculty> facultyes = new HashMap<>();
-    private static Long counter = 0L;
+    private final HashMap<Long, Faculty> facultyes;
+    private static Long counter;
+
+    public FacultyService() {
+        facultyes = new HashMap<>();
+        counter = 0L;
+    }
 
     public Faculty createFaculty(Faculty faculty) {
         faculty.setId(++counter);

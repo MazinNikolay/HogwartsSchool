@@ -9,8 +9,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
-    private final HashMap<Long, Student> students = new HashMap<>();
-    private static Long counter = 0L;
+    private final HashMap<Long, Student> students;
+    private static Long counter;
+
+    public StudentService() {
+        students = new HashMap<>();
+        counter = 0L;
+    }
 
     public Student createStudent(Student student) {
         student.setId(++counter);
