@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FacultyServiceTest {
 
-    private FacultyService out;
+    private FacultyServiceImpl out;
 
     @BeforeEach
     void initial() {
-        out = new FacultyService();
+        out = new FacultyServiceImpl();
         Faculty faculty = new Faculty(1L, "Griffindor", "yellow");
         out.createFaculty(faculty);
     }

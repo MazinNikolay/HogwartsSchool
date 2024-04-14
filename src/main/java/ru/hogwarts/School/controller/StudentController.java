@@ -3,7 +3,7 @@ package ru.hogwarts.School.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.School.model.Student;
-import ru.hogwarts.School.service.StudentService;
+import ru.hogwarts.School.service.interfaces.StudentService;
 
 import java.util.List;
 

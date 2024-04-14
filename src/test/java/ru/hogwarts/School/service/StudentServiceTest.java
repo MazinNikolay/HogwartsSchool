@@ -9,13 +9,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StudentServiceTest {
+class StudentServiceImplTest {
 
-    private StudentService out;
+    private StudentServiceImpl out;
 
     @BeforeEach
     void initial() {
-        out = new StudentService();
+        out = new StudentServiceImpl();
         Student student = new Student(1L, "Tolik", 14);
         out.createStudent(student);
     }
