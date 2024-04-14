@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FacultyServiceTest {
+class FacultyServiceTestImpl {
 
     private FacultyServiceImpl out;
 
