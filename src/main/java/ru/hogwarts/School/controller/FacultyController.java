@@ -22,21 +22,18 @@ public class FacultyController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Faculty> getFaculty(@PathVariable Long id) {
-        return service.getFaculty(id) == null ? ResponseEntity.notFound().build()
-                : ResponseEntity.ok(service.getFaculty(id));
+    public Faculty getFaculty(@PathVariable Long id) {
+        return service.getFaculty(id);
     }
 
     @PutMapping
-    public ResponseEntity<Faculty> updatefaculty(@RequestBody Faculty faculty) {
-        return service.getFaculty(faculty.getId()) == null ? ResponseEntity.notFound().build()
-                : ResponseEntity.ok(service.updateFaculty(faculty));
+    public Faculty updatefaculty(@RequestBody Faculty faculty) {
+        return service.updateFaculty(faculty);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Faculty> deletefaculty(@PathVariable Long id) {
-        return service.getFaculty(id) == null ? ResponseEntity.notFound().build()
-                : ResponseEntity.ok(service.deleteFaculty(id));
+    public Faculty deletefaculty(@PathVariable Long id) {
+        return service.deleteFaculty(id);
     }
 
     @GetMapping("/sortedByColor/{color}")

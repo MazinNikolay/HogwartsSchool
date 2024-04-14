@@ -1,6 +1,7 @@
 package ru.hogwarts.School.service;
 
 import org.springframework.stereotype.Service;
+import ru.hogwarts.School.exceptioms.NotFoundEntityException;
 import ru.hogwarts.School.model.Student;
 import ru.hogwarts.School.service.interfaces.StudentService;
 
@@ -20,24 +21,32 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student createStudent(Student student) {
-        student.setId(++counter);
-        students.put(counter, student);
+        students.put(++counter, student);
         return student;
     }
 
     @Override
     public Student getStudent(Long id) {
+        if (!students.containsKey(id)) {
+            throw new NotFoundEntityException();
+        }
         return students.get(id);
     }
 
     @Override
     public Student updateStudent(Student student) {
+        if (!students.containsKey(student.getId())) {
+            throw new NotFoundEntityException();
+        }
         students.put(student.getId(), student);
         return student;
     }
 
     @Override
     public Student deleteStudent(Long id) {
+        if (!students.containsKey(id)) {
+            throw new NotFoundEntityException();
+        }
         return students.remove(id);
     }
 

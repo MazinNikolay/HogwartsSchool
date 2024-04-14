@@ -1,6 +1,7 @@
 package ru.hogwarts.School.service;
 
 import org.springframework.stereotype.Service;
+import ru.hogwarts.School.exceptioms.NotFoundEntityException;
 import ru.hogwarts.School.model.Faculty;
 import ru.hogwarts.School.service.interfaces.FacultyService;
 
@@ -12,41 +13,49 @@ import static org.apache.commons.lang3.StringUtils.*;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
-    private final HashMap<Long, Faculty> facultyes;
+    private final HashMap<Long, Faculty> faculties;
     private static Long counter;
 
     public FacultyServiceImpl() {
-        facultyes = new HashMap<>();
+        faculties = new HashMap<>();
         counter = 0L;
     }
 
     @Override
     public Faculty createFaculty(Faculty faculty) {
-        faculty.setId(++counter);
-        facultyes.put(counter, faculty);
+        faculties.put(++counter, faculty);
         return faculty;
     }
 
     @Override
     public Faculty getFaculty(Long id) {
-        return facultyes.get(id);
+        if (!faculties.containsKey(id)) {
+            throw new NotFoundEntityException();
+        }
+        return faculties.get(id);
     }
 
     @Override
     public Faculty updateFaculty(Faculty faculty) {
-        facultyes.put(faculty.getId(), faculty);
+        if (!faculties.containsKey(faculty.getId())) {
+            throw new NotFoundEntityException();
+        }
+        faculties.put(faculty.getId(), faculty);
         return faculty;
     }
 
     @Override
     public Faculty deleteFaculty(Long id) {
-        return facultyes.remove(id);
+        if (!faculties.containsKey(id)) {
+            throw new NotFoundEntityException();
+        }
+        return faculties.remove(id);
     }
 
     @Override
     public List<Faculty> sortByColor(String color) {
         String formattedColor = capitalize(lowerCase(color));
-        return facultyes.values().stream()
+        return faculties.values().stream()
                 .filter(e -> e.getColor().equals(formattedColor))
                 .collect(Collectors.toList());
     }

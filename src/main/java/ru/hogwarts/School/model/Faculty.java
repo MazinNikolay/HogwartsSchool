@@ -5,7 +5,7 @@ import java.util.Objects;
 import static org.apache.commons.lang3.StringUtils.*;
 
 public class Faculty {
-    private Long id;
+    private final Long id;
     private String name;
     private String color;
 
@@ -17,10 +17,6 @@ public class Faculty {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
